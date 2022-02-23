@@ -1,0 +1,60 @@
+basic_args:
+  output_dir: ./output/
+  overwrite_output_dir: True
+  seed: 42
+  n_gpu: 1
+  n_nodes: 1
+  distributed_accelerator: null
+  do_train: False
+  do_eval: False
+  do_test: True
+
+data_args:
+  dataset_name: rvlcdip
+  dataset_dir: ./data/rvlcdip
+  data_caching_args:
+    use_datadings: False
+    dataset_cache_dir: ./data/cache/
+  data_splitting_args: null
+    # train_val_sampling_strategy: null
+    # random_split_ratio: 0
+    # k_folds: 5
+  train_aug_args: null
+  eval_aug_args:
+    - name: basic_image
+      keys:
+        - image
+      params:
+        - gray_to_rgb: True
+          rescale_strategy: rescale_simple
+          rescale_params:
+            rescale_dim: 384
+            rescale_both_dims: True
+          normalize: True
+  data_loader_args:
+    per_device_train_batch_size: 64
+    per_device_eval_batch_size: 64
+    dataloader_drop_last: False
+    shuffle_data: True
+    pin_memory: True
+    dataloader_num_workers: 0
+    # max_train_samples: 100
+    # max_val_samples: 100x
+    # max_test_samples: 100
+    # aspect_ratio_grouping_factor: -1
+  data_tokenization_args:
+    tokenize_dataset: False
+    # tokenizer_name: basic_english
+    # tokenizer_lib: torchtext
+    # pad_to_max_length: True
+    # # label_all_tokens: False
+  extras: null
+
+model_args:
+  model_name: docxclassifier
+  model_type: _large
+  model_task: image_classification
+  model_version: rvlcdip_ft
+  cache_dir: ${NETSCRATCH_DAS}/pretrained/
+  use_return_dict: True
+  model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/TxZAR9Mo6bFiKWy/download/large_tobacco_rvlcdip.pth
