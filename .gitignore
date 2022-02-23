@@ -1,9 +1,7 @@
 **/*__pycache__/
 **/*.pyc
 *.png
-.data/AG_NEWS/test.csv
-.data/AG_NEWS/train.csv
 lightning_logs/*
-./data
-./models
-./output
+data/tobacco3482/
+output/
+attns/
