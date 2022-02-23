@@ -14,7 +14,7 @@ data_args:
   dataset_dir: ./data/rvlcdip
   data_caching_args:
     use_datadings: False
-    dataset_cache_dir: ./data/cache/
+    dataset_cache_dir: /tmp/cache/
   data_splitting_args: null
     # train_val_sampling_strategy: null
     # random_split_ratio: 0
@@ -54,7 +54,7 @@ model_args:
   model_name: docxclassifier
   model_type: _base
   model_task: image_classification
-  model_version: rvlcdip_ft
+  model_version: v1
   cache_dir: ${NETSCRATCH_DAS}/pretrained/
   use_return_dict: True
   model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/5e5bjtNe56yLYTy/download/base_rvlcdip.pth

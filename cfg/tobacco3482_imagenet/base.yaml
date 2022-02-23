@@ -11,14 +11,14 @@ basic_args:
 
 data_args:
   dataset_name: tobacco3842
-  dataset_dir: ./data/Tobacco3482
+  dataset_dir: ./data/tobacco3482
   data_caching_args:
     use_datadings: False
     cache_resized_images: True
-    cache_image_size: [224, 224]
+    cache_image_size: [384, 384]
     load_data_to_ram: False
     cached_data_name: '-'
-    dataset_cache_dir: ./tmp/cache
+    dataset_cache_dir: /tmp/cache
   data_splitting_args:
     train_val_sampling_strategy: random_split
     random_split_ratio: 0.8
@@ -31,7 +31,7 @@ data_args:
           - gray_to_rgb: True
             rescale_strategy: rescale_simple
             rescale_params:
-              rescale_dim: 224
+              rescale_dim: 384
               rescale_both_dims: True
             normalize: True
   eval_aug_args:
@@ -42,7 +42,7 @@ data_args:
         - gray_to_rgb: True
           rescale_strategy: rescale_simple
           rescale_params:
-            rescale_dim: 224
+            rescale_dim: 384
             rescale_both_dims: True
           normalize: True
   data_loader_args:
