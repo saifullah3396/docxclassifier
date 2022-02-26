@@ -1,5 +1,5 @@
 basic_args:
-  output_dir: ${OUTPUT}
+  output_dir: ${OUTPUT}/
   overwrite_output_dir: True
   seed: 42
   n_gpu: 1
