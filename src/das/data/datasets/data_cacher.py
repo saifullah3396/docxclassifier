@@ -151,10 +151,9 @@ class DatadingsDataCacher(DataCacher):
                 def get_samples():
                     for idx, _ in dataset.data.iterrows():
                         if idx < cached_data_size:
-                            print(idx, cached_data_size)
                             yield idx, None
                         else:
-                            yield idx, dataset.get_sample(idx)
+                            yield idx, dataset.get_sample(idx, caching=True)
 
                 def preprocess_sample(sample):
                     idx, sample = sample
@@ -162,20 +161,15 @@ class DatadingsDataCacher(DataCacher):
                         return None
                     if self.data_args.data_caching_args.cache_resized_images:
                         if "image" in sample:
-                            sample["image"] = torchvision.transforms.functional.resize(
+                            sample["image"] = cv2.resize(
                                 sample["image"],
                                 self.data_args.data_caching_args.cache_image_size,
                             )
-
-                    if self.data_args.data_caching_args.cache_grayscale_images:
-                        if "image" in sample:
-                            sample["image"] = sample["image"][0]
-
                     if self.data_args.data_caching_args.cache_encoded_images:
-                        sample["image"] = cv2.imencode(".png", sample["image"].numpy())[
-                            1
-                        ].tobytes()
-
+                        if "image" in sample:
+                            sample["image"] = cv2.imencode(".png", sample["image"])[
+                                1
+                            ].tobytes()
                     sample = {"key": str(idx), "data": pickle.dumps(sample)}
                     return sample
 
@@ -187,9 +181,14 @@ class DatadingsDataCacher(DataCacher):
                         "Writing all data into a datadings file. "
                         "This might take a while... Please do not press ctrl-C."
                     )
-                    for sample in tqdm(pool.imap_unordered(preprocess_sample, gen)):
+                    pbar = tqdm(
+                        pool.imap_unordered(preprocess_sample, gen),
+                        total=len(dataset.data),
+                    )
+                    for sample in pbar:
                         if sample:
                             writer.write({**sample})
+                            pbar.update(1)
 
                     # progress = tqdm(
                     #     dataset.data.iterrows(), total=dataset.data.shape[0]
@@ -235,7 +234,7 @@ class DatadingsDataCacher(DataCacher):
         return self.file_path
 
     def save_dataset_meta(self, dataset):
-        sample = dataset.get_sample(0)
+        sample = dataset.get_sample(0, caching=True)
         # if (
         #     self.data_args.data_tokenization_args.tokenize_dataset
         #     and self.data_args.data_tokenization_args.tokenize_per_sample

@@ -210,7 +210,7 @@ class DatasetsBase(Dataset):
         else:
             return len(self.data)
 
-    def get_sample(self, idx):
+    def get_sample(self, idx, caching=False):
         """
         This must be defined in the child class to actually return one sample at
         given index.
@@ -234,22 +234,28 @@ class DatasetsBase(Dataset):
         # get the sample from the cached data if needed
         sample = self.data_cache_handler.get_sample(self, idx)
 
-        if self.data_args.data_caching_args.cache_encoded_images:
-            if DataKeysEnum.IMAGE in sample:
+        if (
+            self.data_args.data_caching_args.use_datadings
+            and DataKeysEnum.IMAGE in sample
+        ):
+            if self.data_args.data_caching_args.cache_encoded_images:
                 image = cv2.imdecode(
                     np.fromstring(sample[DataKeysEnum.IMAGE], dtype="uint8"),
                     cv2.IMREAD_COLOR,
                 )
-                image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                image = torch.tensor(image)
+            else:
+                image = sample[DataKeysEnum.IMAGE]
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            image = torch.tensor(image)
 
-                # permute channels to mimic torch tensors
-                if len(image.shape) == 3:
-                    image = image.permute(2, 0, 1)
+            # permute channels to mimic torch tensors
+            if len(image.shape) == 3:
+                image = image.permute(2, 0, 1)
 
-                # add a channel to image if not present
-                if len(image.shape) == 2:
-                    image = torch.unsqueeze(image, 0)
+            # add a channel to image if not present
+            if len(image.shape) == 2:
+                image = torch.unsqueeze(image, 0)
+            sample[DataKeysEnum.IMAGE] = image
 
         if (
             self.data_args.data_tokenization_args.tokenize_dataset

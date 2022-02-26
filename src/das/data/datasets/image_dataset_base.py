@@ -116,33 +116,39 @@ class ImageDatasetsBase(DatasetsBase):
                     module.mean = fixed_mean
                     module.std = fixed_std
 
-    def get_sample(self, idx, load_image=True):
+    def get_sample(self, idx, caching=False, load_image=True):
         if load_image:
             # get image file path
             image_file_path = self.data.iloc[idx][DataKeysEnum.IMAGE_FILE_PATH]
 
             try:
-                if image_file_path.endswith(("png")):
-                    # load image into torch tensor
-                    image = read_image(image_file_path)
-
-                    # add a channel to image if not present
-                    if len(image.shape) == 2:
-                        image = torch.unsqueeze(image, 0)
+                if self.data_args.data_caching_args.use_datadings and caching:
+                    if self.data_args.data_caching_args.cache_grayscale_images:
+                        image = cv2.imread(image_file_path, 0)
+                    else:
+                        image = cv2.imread(image_file_path)
                 else:
-                    image = cv2.imread(image_file_path)
+                    if image_file_path.endswith(("png")):
+                        # load image into torch tensor
+                        image = read_image(image_file_path)
 
-                    # convert image to RGB as opencv reads in in BGR
-                    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                    image = torch.tensor(image)
+                        # add a channel to image if not present
+                        if len(image.shape) == 2:
+                            image = torch.unsqueeze(image, 0)
+                    else:
+                        image = cv2.imread(image_file_path)
 
-                    # permute channels to mimic torch tensors
-                    if len(image.shape) == 3:
-                        image = image.permute(2, 0, 1)
+                        # convert image to RGB as opencv reads in in BGR
+                        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+                        image = torch.tensor(image)
 
-                    # add a channel to image if not present
-                    if len(image.shape) == 2:
-                        image = torch.unsqueeze(image, 0)
+                        # permute channels to mimic torch tensors
+                        if len(image.shape) == 3:
+                            image = image.permute(2, 0, 1)
+
+                        # add a channel to image if not present
+                        if len(image.shape) == 2:
+                            image = torch.unsqueeze(image, 0)
             except Exception as e:
                 logger.exception(
                     f"Exception raised while opening image file: {image_file_path}: ", e

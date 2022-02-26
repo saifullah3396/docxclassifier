@@ -52,6 +52,15 @@ class RVLCDIPDataset(ImageDatasetsBase):
             names=data_columns,
             delim_whitespace=True,
         )
+
+        # remove this corrupted file
+        data = data.drop(
+            data[
+                data["image_file_path"]
+                == "imagese/e/j/e/eje42e00/2500126531_2500126536.tif"
+            ].index
+        ).reset_index()
+
         if self.data_args.extras is not None and "version" in self.data_args.extras:
             data[DataKeysEnum.IMAGE_FILE_PATH] = [
                 f"{self.root_dir}/images/{x[:-4]}{self.data_args.extras['version']}{x[-4:]}"
