@@ -1,5 +1,5 @@
 basic_args:
-  output_dir: /tmp/output/
+  output_dir: ${OUTPUT}
   overwrite_output_dir: True
   seed: 42
   n_gpu: 1
@@ -11,10 +11,17 @@ basic_args:
 
 data_args:
   dataset_name: rvlcdip
-  dataset_dir: ./data/rvlcdip
+  dataset_dir: ''
   data_caching_args:
-    use_datadings: False
-    dataset_cache_dir: /tmp/cache/
+    use_datadings: True
+    cache_grayscale_images: True
+    cache_resized_images: True
+    cache_encoded_images: True
+    cache_image_size: [384, 384]
+    # load_data_to_ram: False
+    cached_data_name: resized_384x384
+    dataset_cache_dir: ${OUTPUT}/datasets/
+    workers: 1
   data_splitting_args: null
     # train_val_sampling_strategy: null
     # random_split_ratio: 0
@@ -39,7 +46,7 @@ data_args:
     pin_memory: True
     dataloader_num_workers: 0
     # max_train_samples: 100
-    # max_val_samples: 100x
+    # max_val_samples: 100
     # max_test_samples: 100
     # aspect_ratio_grouping_factor: -1
   data_tokenization_args:
@@ -55,6 +62,6 @@ model_args:
   model_type: _large
   model_task: image_classification
   model_version: v1
-  cache_dir: ${NETSCRATCH_DAS}/pretrained/
+  cache_dir: ${OUTPUT}/pretrained/
   use_return_dict: True
   model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/yoPzK6T9RHX4C7C/download/large_rvlcdip.pth

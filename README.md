@@ -14,6 +14,12 @@ Set PYTHONPATH to match source the directory:
 export PYTHONPATH=`pwd`/src
 ```
 
+Create output directory for holding dataset, models, etc
+```
+export OUTPUT=</path/to/output/>
+mkdir -p $OUTPUT
+```
+
 # Models
 | Model | Dataset | Accuracy |
 | :---: | :---: | :---: |
@@ -28,50 +34,55 @@ export PYTHONPATH=`pwd`/src
 | [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/TEfnWQ89ZbHBnG3/download/xlarge_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 90.14
 
 # Evaluation on RVL-CDIP:
-Please download the [RVL-CDIP](https://www.cs.cmu.edu/~aharley/rvl-cdip/) dataset and put it in the data directory.
+Please download the [RVL-CDIP](https://www.cs.cmu.edu/~aharley/rvl-cdip/) dataset.
 Evaluate the models as follows:
 ```
-./scripts/evaluate.sh --cfg ./cfg/rvlcdip/base.yaml # base model
+./scripts/evaluate.sh --cfg ./cfg/rvlcdip/base.yaml data_args.dataset_dir </path/to/rvlcdip_dataset> # base model
 ```
 ```
-./scripts/evaluate.sh --cfg ./cfg/rvlcdip/large.yaml # large model
+./scripts/evaluate.sh --cfg ./cfg/rvlcdip/large.yaml data_args.dataset_dir </path/to/rvlcdip_dataset> # large model
 ```
 ```
-./scripts/evaluate.sh --cfg ./cfg/rvlcdip/xlarge.yaml # xlarge model
+./scripts/evaluate.sh --cfg ./cfg/rvlcdip/xlarge.yaml data_args.dataset_dir </path/to/rvlcdip_dataset> # xlarge model
 ```
 
 
 # Evaluation on Tobacco3482 dataset:
-Please download the [Tobacco3482](https://www.kaggle.com/patrickaudriaz/tobacco3482jpg) dataset and put it in the data/tobacco3482 directory. Make sure to keep train.txt and test.txt files from the data/tobacco3482 directory.
+Please download the [Tobacco3482](https://www.kaggle.com/patrickaudriaz/tobacco3482jpg) dataset and put it in the /path/to/tobacco3482 directory. Make sure to keep train.txt and test.txt files from the data/tobacco3482 directory.
+
+Copy the train/test splits to the dataset directory:
+```
+cp data/tobacco3482/* /path/to/tobacco3482/
+```
 
 ## ImageNet Pretraining
 Evaluate the models as follows:
 ```
-./scripts/evaluate.sh --cfg ./cfg/tobacco3482_imagenet/base.yaml # base model
+./scripts/evaluate.sh --cfg ./cfg/tobacco3482_imagenet/base.yaml data_args.dataset_dir </path/to/tobacco3482_dataset> # base model
 ```
 ```
-./scripts/evaluate.sh --cfg ./cfg/tobacco3482_imagenet/large.yaml # large model
+./scripts/evaluate.sh --cfg ./cfg/tobacco3482_imagenet/large.yaml data_args.dataset_dir </path/to/tobacco3482_dataset> # large model
 ```
 ```
-./scripts/evaluate.sh --cfg ./cfg/tobacco3482_imagenet/xlarge.yaml # xlarge model
+./scripts/evaluate.sh --cfg ./cfg/tobacco3482_imagenet/xlarge.yaml data_args.dataset_dir </path/to/tobacco3482_dataset> # xlarge model
 ```
 
 ## RVL-CDIP Pretraining
 Evaluate the models as follows:
 ```
-./scripts/evaluate.sh --cfg ./cfg/tobacco3482_rvlcdip/base.yaml # base model
+./scripts/evaluate.sh --cfg ./cfg/tobacco3482_rvlcdip/base.yaml data_args.dataset_dir </path/to/tobacco3482_dataset># base model
 ```
 ```
-./scripts/evaluate.sh --cfg ./cfg/tobacco3482_rvlcdip/large.yaml # large model
+./scripts/evaluate.sh --cfg ./cfg/tobacco3482_rvlcdip/large.yaml data_args.dataset_dir </path/to/tobacco3482_dataset># large model
 ```
 ```
-./scripts/evaluate.sh --cfg ./cfg/tobacco3482_rvlcdip/xlarge.yaml # xlarge model
+./scripts/evaluate.sh --cfg ./cfg/tobacco3482_rvlcdip/xlarge.yaml data_args.dataset_dir </path/to/tobacco3482_dataset># xlarge model
 ```
 
 # Generating Attention Maps
 To generate the attention maps just call the following script:
 ```
-./scripts/generate_attention_maps.sh --cfg ./cfg/rvlcdip/base.yaml # base model
+./scripts/generate_attention_maps.sh --cfg ./cfg/rvlcdip/base.yaml data_args.dataset_dir </path/to/rvlcdip_dataset> # base model
 ```
 This will save the attention maps from the model to the attn directory. For different models just change the --cfg as above.
 
