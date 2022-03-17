@@ -90,6 +90,7 @@ This will save the attention maps from the model to the attn directory. For diff
 # Citation
 If you find this useful in your research, please consider citing our associated paper:
 ```
+., Saifullah; Agne, Stefan; Dengel, Andreas; Ahmed, Sheraz (2022): DocXClassifier: High Performance Explainable Deep Network for Document Image Classification. TechRxiv. Preprint. https://doi.org/10.36227/techrxiv.19310489.v2 
 ```
 
 # License
