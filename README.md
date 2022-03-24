@@ -1,5 +1,5 @@
 # DocXClassifier: High Performance Explainable Deep Network for Document Image Classification
-This repository contains the evaluation code for the paper [DocXClassifier: High Performance Explainable Deep Network for Document Image Classification](https) by Saifullah, Stefan Agne, Andreas Dengel, and Sheraz Ahmed.
+This repository contains the evaluation code for the paper [DocXClassifier: High Performance Explainable Deep Network for Document Image Classification](https://www.techrxiv.org/articles/preprint/DocXClassifier_High_Performance_Explainable_Deep_Network_for_Document_Image_Classification/19310489) by Saifullah, Stefan Agne, Andreas Dengel, and Sheraz Ahmed.
 
 Requires Python 3+. For evaluation, please follow the steps below.
 
