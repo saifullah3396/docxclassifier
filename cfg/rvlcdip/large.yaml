@@ -64,4 +64,4 @@ model_args:
   model_version: v1
   cache_dir: ${OUTPUT}/pretrained/
   use_return_dict: True
-  model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/yoPzK6T9RHX4C7C/download/large_rvlcdip.pth
+  model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/9dgoNDdPcECEsrH/download/large_rvlcdip.pth
