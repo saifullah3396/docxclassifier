@@ -23,12 +23,12 @@ mkdir -p $OUTPUT
 # Models
 | Model | Dataset | Accuracy |
 | :---: | :---: | :---: |
-| [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/5e5bjtNe56yLYTy/download/base_rvlcdip.pth) | RVL-CDIP | 93.74
-| [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/yoPzK6T9RHX4C7C/download/large_rvlcdip.pth) | RVL-CDIP | 93.75
-| [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/X9HXS7HJT5FRBN2/download/xlarge_rvlcdip.pth) | RVL-CDIP |  94.07
-| [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/QybGNHkAXKqDypD/download/base_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 94.71
-| [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/TxZAR9Mo6bFiKWy/download/large_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 94.86
-| [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/b8J3Xf8K5EDKLc9/download/xlarge_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.29
+| [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/JrQLkji3mzPkqBW/download/base_rvlcdip.pth) | RVL-CDIP | 94.00%
+| [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/9dgoNDdPcECEsrH/download/large_rvlcdip.pth) | RVL-CDIP | 94.15%
+| [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/jLJHstWsM5XiEpd/download/xlarge_rvlcdip.pth) | RVL-CDIP | 94.17%
+| [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/f7AjyADrC8EJEcz/download/base_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.29% 
+| [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/Z8YaoLyfGfgNzLB/download/large_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.57%
+| [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/eQMG74ifACKEjwt/download/xlarge_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.43%
 | [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/m2XR3yL3TFKesCx/download/base_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 87.43
 | [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/r88txKxbnx3s46N/download/large_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 88.43
 | [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/TEfnWQ89ZbHBnG3/download/xlarge_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 90.14
