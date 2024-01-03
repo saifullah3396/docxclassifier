@@ -74,4 +74,4 @@ model_args:
   model_version: v1
   cache_dir: ${OUTPUT}/pretrained/
   use_return_dict: True
-  model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/TxZAR9Mo6bFiKWy/download/large_tobacco_rvlcdip.pth
+  model_checkpoint_file: https://cloud.dfki.de/owncloud/index.php/s/Z8YaoLyfGfgNzLB/download/large_tobacco_rvlcdip.pth
