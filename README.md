@@ -29,9 +29,9 @@ mkdir -p $OUTPUT
 | [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/f7AjyADrC8EJEcz/download/base_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.29% 
 | [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/Z8YaoLyfGfgNzLB/download/large_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.57%
 | [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/eQMG74ifACKEjwt/download/xlarge_tobacco_rvlcdip.pth) | Tobacco3482 (RVL-CDIP Pretraining) | 95.43%
-| [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/m2XR3yL3TFKesCx/download/base_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 87.43
-| [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/r88txKxbnx3s46N/download/large_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 88.43
-| [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/TEfnWQ89ZbHBnG3/download/xlarge_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 90.14
+| [DocXClassifier-B](https://cloud.dfki.de/owncloud/index.php/s/m2XR3yL3TFKesCx/download/base_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 87.43%
+| [DocXClassifier-L](https://cloud.dfki.de/owncloud/index.php/s/r88txKxbnx3s46N/download/large_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 88.43%
+| [DocXClassifier-XL](https://cloud.dfki.de/owncloud/index.php/s/TEfnWQ89ZbHBnG3/download/xlarge_tobacco_imagenet.pth) | Tobacco3482 (ImageNet Pretraining) | 90.14%
 
 # Evaluation on RVL-CDIP:
 Please download the [RVL-CDIP](https://www.cs.cmu.edu/~aharley/rvl-cdip/) dataset.
