@@ -1,0 +1,5 @@
+cumulative_delta: false
+min_delta: 0.0
+mode: min
+monitored_metric: null # val/loss
+patience: 5

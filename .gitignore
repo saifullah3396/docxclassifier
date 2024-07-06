@@ -1,0 +1,9 @@
+**/**.pyc
+**/**.pth
+**/**events**
+**/**notebook.log
+cache/
+outputs/
+reading_order_impl.ipynb
+test.ipynb
+test copy.ipynb

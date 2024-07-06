@@ -1,0 +1,31 @@
+# @package _global_
+defaults:
+  - override /base/defaults/train_preprocess_augs: image_preprocess
+  - override /base/defaults/eval_preprocess_augs: image_preprocess
+  - override /base/defaults/train_realtime_augs: basic_image_aug
+  - override /base/defaults/eval_realtime_augs: basic_image_aug
+  - override /base/defaults/train_val_sampler: random_split
+
+args:
+  data_args:
+    cache_file_name: cached_${preprocess_image_size_x}x${preprocess_image_size_y}_resize_pil_or_cv2_${resize_pil_or_cv2}
+
+# data preprocessing args
+preprocess_image_size_x: 384 # 1024, 512, 256, etc
+preprocess_image_size_y: 384 # 1024, 512, 256, etc
+image_size_x: 384
+image_size_y: 384
+encode_image: False
+encode_format: PNG # dataset gets encoded anyway before saving but it is still good to have this option for JPEG if needed
+resize_pil_or_cv2: CV2
+
+# set image mean/std
+mean:
+  - 0.485
+  - 0.456
+  - 0.406
+
+std:
+  - 0.229
+  - 0.224
+  - 0.225

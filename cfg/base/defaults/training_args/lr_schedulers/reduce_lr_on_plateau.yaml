@@ -1,0 +1,7 @@
+default:
+  name: reduce_lr_on_plateau
+  params:
+    metric_name: val/loss
+    save_history: true
+    mode: min
+    patience: 3

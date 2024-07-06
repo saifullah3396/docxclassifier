@@ -1,0 +1,11 @@
+default:
+  group_params:
+    - group_name: default
+      kwargs:
+        betas:
+          - 0.9
+          - 0.999
+        eps: 1.0e-08
+        lr: 1.0e-5
+        weight_decay: 1.0e-8
+  name: adam

@@ -1,0 +1,12 @@
+# @package args.eval_preprocess_augs
+
+- name: ImagePreprocess
+  kwargs:
+    rescale_size:
+      - ${preprocess_image_size_y}
+      - ${preprocess_image_size_x}
+    square_pad: False
+    encode_image: ${encode_image}
+    encode_format: ${encode_format} # PNG, JPEG, etc
+    resize_pil_or_cv2: ${resize_pil_or_cv2} # PIL, CV2
+    key: image

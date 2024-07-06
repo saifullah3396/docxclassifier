@@ -1,0 +1,4 @@
+default:
+  name: cosine_annealing_lr
+  params: {}
+  restarts: false

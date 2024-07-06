@@ -1,0 +1,49 @@
+{
+    // hide directories here if there are too many to handle
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/**__pycache__": true,
+        "external": false, // handle contains the external submodules necessary for running the code
+    },
+    "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true,
+    // Remove Unused Python imports via bash
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.py$",
+                "isAsync": true,
+                // Use the full path from above in case it can't find it
+                "cmd": "autoflake --in-place --remove-all-unused-imports \"${file}\""
+            },
+        ]
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "editor.trimAutoWhitespace": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "files.trimTrailingWhitespace": true,
+    "editor.rulers": [
+        120
+    ],
+    "cSpell.diagnosticLevel": "Hint",
+    "workbench.colorCustomizations": {
+        // will change the color of three dots to red
+        "editorHint.foreground": "#ff0000",
+        // will underline the entire word with dots in your chosen color
+        "editorHint.border": "#00ff66"
+    },
+    "python.analysis.extraPaths": [
+        "./external/torchfusion/src",
+    ],
+    "notebook.output.textLineLimit": 200,
+    "notebook.output.scrolling": false,
+}

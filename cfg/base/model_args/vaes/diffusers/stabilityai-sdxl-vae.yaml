@@ -1,0 +1,19 @@
+# @package args.model_args
+
+name: fusion_model_image_vae
+model_task: autoencoding
+
+cache_dir: ${oc.env:TORCH_FUSION_CACHE_DIR}/pretrained/
+model_directory_name: ${args.model_args.name}_${args.model_args.model_config.model_constructor_args.model_name}
+convert_bn_to_gn: false
+remove_lora_layers: false
+return_dict: True
+bypass_params_creation: False 
+model_config:
+  model_constructor: diffusers
+  model_constructor_args:
+    model_name: stabilityai/sdxl-vae
+    init_args: {}
+    pretrained: True
+    checkpoint: null
+    checkpoint_state_dict_key: model

@@ -1,0 +1,18 @@
+# @package args.data_loader_args
+
+per_device_train_batch_size: 32
+per_device_eval_batch_size: 32
+dataloader_drop_last: False
+shuffle_data: True # this applies to training only
+pin_memory: True
+dataloader_num_workers: 4
+use_test_set_for_val: False
+max_test_samples: null
+max_train_samples: null
+max_val_samples: null
+train_batch_sampler:
+  name: ""
+  kwargs: {}
+eval_batch_sampler:
+  name: ""
+  kwargs: {}

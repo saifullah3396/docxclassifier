@@ -1,0 +1,16 @@
+# @package args.train_realtime_augs
+
+- name: BasicImageAug
+  kwargs:
+    gray_to_rgb: True
+    normalize: True
+    mean: ${mean}
+    std: ${std}
+    rescale_strategy:
+      name: Rescale
+      kwargs:
+        size:
+          - ${image_size_y}
+          - ${image_size_x}
+    key:
+      - image

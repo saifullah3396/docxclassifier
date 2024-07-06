@@ -1,0 +1,24 @@
+# @package args.model_args
+
+name: fusion_model
+model_task: token_classification
+cache_dir: ${oc.env:TORCH_FUSION_CACHE_DIR}/pretrained/
+model_directory_name: ${args.model_args.name}_${args.model_args.model_config.model_constructor_args.model_name}
+convert_bn_to_gn: false
+remove_lora_layers: false
+return_dict: True
+bypass_params_creation: False
+model_config:
+  input_is_tokenized: true
+  input_stride: ${stride}
+  use_image: True
+  use_bbox: True
+  num_labels: null
+  model_constructor: fusion_model
+  model_constructor_args:
+    model_name: interpretable_layoutlmv3
+    init_args:
+      config_name: microsoft/layoutlmv3-base
+    pretrained: True
+    checkpoint: null
+    checkpoint_state_dict_key: state_dict

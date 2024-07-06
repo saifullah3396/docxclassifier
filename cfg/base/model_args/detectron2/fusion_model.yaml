@@ -1,0 +1,20 @@
+# @package args.model_args
+
+name: fusion_model
+model_task: object_detection
+cache_dir: ${oc.env:TORCH_FUSION_CACHE_DIR}/pretrained/
+model_directory_name: ${args.model_args.name}_${args.model_args.model_config.model_constructor_args.model_name}
+convert_bn_to_gn: false
+remove_lora_layers: false
+return_dict: True
+bypass_params_creation: False 
+model_config:
+  model_constructor: detectron2
+  model_constructor_args:
+    model_name: ${model_name} # model name is actually not used for model construction but still needed for log dirs
+    init_args:
+      cfg_path: ${cfg_path}/${args.model_args.model_config.model_constructor_args.model_name}.yaml
+      add_vit_config: True
+    pretrained: True
+    checkpoint: ${checkpoint}
+    checkpoint_state_dict_key: state_dict

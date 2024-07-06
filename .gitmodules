@@ -1,0 +1,3 @@
+[submodule "external/torchfusion"]
+	path = external/torchfusion
+	url = https://github.com/saifullah3396/torchfusion.git

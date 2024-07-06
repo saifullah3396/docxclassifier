@@ -1,0 +1,5 @@
+enabled: false
+momentum: 0.0001
+update_every: 1
+# momentum_warmup: 0.999 # start from online model
+# warmup_iters: 1000

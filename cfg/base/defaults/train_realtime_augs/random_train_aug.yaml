@@ -1,0 +1,23 @@
+# @package args.train_realtime_augs
+
+- name: BasicImageAug
+  kwargs:
+    gray_to_rgb: True
+    # rgb_to_gray: True
+    normalize: True
+    random_hflip: True
+    random_vflip: True
+    mean:
+      - 0.5
+    std:
+      - 0.5
+    rescale_strategy:
+      name: RandomResizedCrop
+      kwargs:
+        size:
+          - 256
+          - 256
+        scale: ${as_tuple:0.08,1.0}
+        ratio: ${as_tuple:0.75,1.333}
+    key:
+      - image

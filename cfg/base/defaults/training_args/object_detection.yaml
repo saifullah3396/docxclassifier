@@ -1,0 +1,50 @@
+# @package args.training_args
+
+defaults:
+  - cutmixup_args: default
+  - early_stopping_args: default
+  - model_checkpoint_config: default 
+  - model_ema_args: default
+  - metric_args: default
+  - optimizers: adam_w
+  - lr_schedulers: cosine_annealing_lr
+
+experiment_name: default
+clear_cuda_cache: true
+enable_checkpointing: true
+enable_grad_clipping: true
+eval_on_start: true
+gradient_accumulation_steps: ${gradient_accumulation_steps}
+log_gpu_stats: False
+log_to_tb: true
+logging_steps: 1000
+eval_every_n_epochs: 1
+visualize_every_n_epochs: 1
+visualize_on_start: true
+visualize_n_batches: 1
+max_epochs: 100
+max_grad_norm: 1.0
+min_epochs: null
+non_blocking_tensor_conv: false
+resume_checkpoint_file: null
+resume_from_checkpoint: true
+smoothing: 0.0
+stop_on_nan: true
+sync_batchnorm: true
+test_checkpoint_file: null
+warmup_ratio: 0 # 2 epochs
+warmup_steps: 0
+wd_schedulers: null
+with_amp: True
+load_best_checkpoint_resume: false    
+outputs_to_metric:
+  - loss
+  - loss_cls_stage0
+  - loss_box_reg_stage0
+  - loss_cls_stage1
+  - loss_box_reg_stage1
+  - loss_cls_stage2
+  - loss_box_reg_stage2
+  - loss_mask
+  - loss_rpn_cls 
+  - loss_rpn_loc

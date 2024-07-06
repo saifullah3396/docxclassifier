@@ -1,0 +1,9 @@
+# @package args.eval_realtime_augs
+
+- name: ObjectDetectionImageAug
+  kwargs:
+    min_size: ${eval_realtime_min_size}
+    max_size: ${eval_realtime_max_size}
+    random_flip: ${random_flip}
+    mask_on: ${mask_on}
+    sampling_style: ${eval_sampling_style}

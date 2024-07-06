@@ -1,0 +1,98 @@
+# @package _global_
+defaults:
+  - /base/defaults/general_args: default # we map /default_args/general_args -> /args/general_args to keep it clean, simialrly all other default args
+  - /base/defaults/data_loader_args: default
+  - /base/defaults/train_val_sampler: null # random_split, stratified_split, etc
+  - /base/defaults/train_preprocess_augs: null
+  - /base/defaults/eval_preprocess_augs: null
+  - /base/defaults/train_realtime_augs: null
+  - /base/defaults/eval_realtime_augs: null
+  - /base/defaults/training_args: default
+  - /base/data_args: "???"
+  - /base/model_args: "???"
+  - override /base/defaults/training_args/optimizers@args.training_args.optimizers: adam
+  - _self_
+
+hydra:
+  run:
+    dir: ${args.general_args.root_output_dir}/${args.data_args.dataset_name}/${args.training_args.experiment_name}/${dir_name_from_overrides:${hydra.overrides},${dir_name_filter}}
+  output_subdir: hydra
+  job:
+    chdir: False
+
+# data loader args
+args:
+  general_args:
+    do_train: False
+    do_val: False
+    do_test: True
+  data_args:
+    dataset_config_name: ${dataset_config_name}
+  data_loader_args:
+    per_device_train_batch_size: ${per_device_train_batch_size}
+    per_device_eval_batch_size: ${per_device_eval_batch_size}
+    dataloader_num_workers: ${dataloader_num_workers}
+    use_test_set_for_val: ${use_test_set_for_val}
+    max_test_samples: ${max_test_samples}
+    max_train_samples: ${max_train_samples}
+    max_val_samples: ${max_val_samples}
+  training_args:
+    experiment_name: ${experiment_name}
+    eval_on_start: True
+    eval_every_n_epochs: 1
+    visualize_every_n_epochs: ${visualize_every_n_epochs}
+    visualize_on_start: ${visualize_on_start}
+    visualize_n_batches: ${visualize_n_batches}
+    logging_steps: 50
+    profile_time: False
+    save_model_forward_outputs: ${save_model_forward_outputs}
+    optimizers:
+      default:
+        group_params:
+          - group_name: default
+            kwargs:
+              lr: ${lr}
+              weight_decay: ${weight_decay}
+  model_args:
+    model_config:
+      model_constructor_args:
+        checkpoint: ${checkpoint}
+        checkpoint_state_dict_key: ${checkpoint_state_dict_key}
+
+# data args
+dataset_config_name: default
+image_size_x: 224
+image_size_y: 224
+
+# necessary dataloader args
+per_device_train_batch_size: "???"
+per_device_eval_batch_size: "???"
+dataloader_num_workers: "???"
+max_test_samples: null
+max_train_samples: null
+max_val_samples: null
+use_test_set_for_val: false
+
+# necessary training args
+experiment_name: "???"
+save_model_forward_outputs: False
+
+# opt args
+lr: 5.0e-5
+weight_decay: 0.0
+gradient_accumulation_steps: 4
+
+# visualization args
+visualize_every_n_epochs: 1
+visualize_on_start: false
+visualize_n_batches: 10
+
+# checkpoint args
+checkpoint: null # model checkpoint path if required
+checkpoint_state_dict_key: state_dict
+
+# here we map each override argument to output directory. This allows clean output directory structure for different arguments passed when sweeping for example
+dir_name_filter:
+  image_size_x: sx
+  image_size_y: sy
+  max_epochs: epochs

@@ -1,0 +1,15 @@
+# @package args.data_args
+
+dataset_name: '???'
+dataset_dir: '???'
+dataset_config_name: default
+dataset_cache_dir: ${args.data_args.dataset_dir}/huggingface/
+features_path: null
+cache_file_name: original
+compute_dataset_statistics: False
+stats_filename: stats
+dataset_statistics_n_samples: 5000
+num_proc: 1
+preprocess_batch_size: 1000
+use_auth_token: False
+dataset_kwargs: {}

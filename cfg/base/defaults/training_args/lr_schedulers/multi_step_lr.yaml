@@ -1,0 +1,5 @@
+default:
+  name: multi_step_lr
+  params:
+    milestones: [60, 120, 160] # these are epochs
+    gamma: 0.2

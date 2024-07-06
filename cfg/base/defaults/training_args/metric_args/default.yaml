@@ -1,0 +1,10 @@
+- name: accuracy
+  kwargs: {}
+- name: precision
+  kwargs:
+    average: macro
+- name: recall
+  kwargs:
+    average: macro
+- name: f1
+  kwargs: {}

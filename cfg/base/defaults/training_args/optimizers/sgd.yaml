@@ -1,0 +1,7 @@
+default:
+  group_params:
+    - group_name: default
+      kwargs:
+        lr: 0.01
+        weight_decay: 1.0e-4
+  name: sgd

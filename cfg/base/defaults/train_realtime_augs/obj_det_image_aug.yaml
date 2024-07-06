@@ -1,0 +1,9 @@
+# @package args.train_realtime_augs
+
+- name: ObjectDetectionImageAug
+  kwargs:
+    min_size: ${train_realtime_min_size}
+    max_size: ${train_realtime_max_size}
+    random_flip: ${random_flip}
+    mask_on: ${mask_on}
+    sampling_style: ${train_sampling_style}

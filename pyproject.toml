@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torchfusion"
+version = "0.0.1"
+authors = [
+  { name="Saifullah", email="saifullah3396@gmail.com" },
+]
+description = "Python package for Pytorch Training/Testing based on Pytorch Ignite."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"

@@ -1,0 +1,9 @@
+# @package args.train_preprocess_augs
+
+- name: ObjectDetectionImagePreprocess
+  kwargs:
+    min_size: ${preprocess_min_size}
+    max_size: ${preprocess_max_size}
+    encode_image: ${encode_image}
+    encode_format: ${encode_format} # PNG, JPEG, etc
+    key: image
